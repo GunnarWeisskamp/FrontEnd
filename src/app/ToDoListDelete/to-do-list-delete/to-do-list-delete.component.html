@@ -25,7 +25,7 @@
                         It is done
                     </div>
                 </td>
-                <td><button (click)="recordToDelete(item.id)">Click me!</button></td>
+                <td><button [disabled]="this.resCls.isError" class="btn btn-dark" (click)="recordToDelete(item.id)">Click me!</button></td>
             </tr>
         </tbody>
     </table>
@@ -58,7 +58,7 @@
                     It is done
                 </div>
             </th>
-            <th scope="row"><button (click)="deleteData()">Delete</button></th>
+            <th scope="row"><button class="btn btn-dark" (click)="deleteData()">Delete</button></th>
           </tr>  
         </tbody>
     </table>

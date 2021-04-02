@@ -33,6 +33,12 @@ export class ToDoListDeleteComponent implements OnInit {
       this.serAllToDo.getAllToDo().
       subscribe((x: toDo[]) => {
         this.toDoClsArray = x;
+        if(this.toDoClsArray[0].description.indexOf('Error') >= 0){
+          this.pageLoading = 2
+          this.resCls.isError = true;
+          this.resCls.endMessage = this.toDoClsArray[0].description;
+          return;
+        }
       });
     }
     recordToDelete(value){

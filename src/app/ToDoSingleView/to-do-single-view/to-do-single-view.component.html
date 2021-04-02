@@ -1,5 +1,5 @@
 <div class="container">
-    Enter ID of To Do to view 
+    <span>Enter ID of To Do to view </span>
     <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -10,14 +10,14 @@
         <tbody>
           <tr>
             <th scope="row"><input type="number" [(ngModel)]="id" required></th>
-            <th scope="row"><button (click)="submitData()">Submit</button></th>
+            <th scope="row"><button class="btn btn-dark" (click)="submitData()">Submit</button></th>
           </tr>  
         </tbody>
     </table>
 </div>
 
 <div class="container">
-    Results 
+    <span>Results </span>
     <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -44,6 +44,6 @@
         </tbody>
       </table>
       <div *ngIf="error == 1">
-          {{errorMsg}}
+         <span>{{errorMsg}}</span>
       </div>
 </div>

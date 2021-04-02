@@ -2,7 +2,7 @@
   <table class="table table-striped">
       <thead>
           <tr>
-              <th> Get To Do List By Done Status</th>
+              <th>Get To Do List By Done Status</th>
               <th>Get To Do List By Pending Status</th>           
           </tr>
       </thead>
@@ -41,7 +41,7 @@
             It is done
         </div>
     </td>
-      <td><button (click)="edit(item.id)">Click me!</button></td>
+      <td><button class="btn btn-dark" (click)="edit(item.id)">Click me!</button></td>
     </tr>
     </tbody>
   </table>
@@ -60,12 +60,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of toDoClsArray">
+    <tr>
       <th><input type="text" readonly [(ngModel)]="toDoCls.id"></th>
       <td><input type="text" readonly [(ngModel)]="toDoCls.description"></td>
       <td><input type="radio" name="status" value="pending" [checked]="toDoCls.status == false" [(ngModel)]="answer"></td>
       <td><input type="radio" name="status" value="done" [checked]="toDoCls.status == true" [(ngModel)]="answer"></td>
-      <td><button (click)="submitData()"> Submit</button></td>
+      <td><button class="btn btn-dark" (click)="submitData()"> Submit</button></td>
     </tr>
     </tbody>
   </table>
@@ -79,26 +79,3 @@
   </div>
 </div>
 
-
-  <!-- <br>
-  Edit Pending<br>
-<br>
-Id: <input type="text" readonly [(ngModel)]="toDoCls.id"><br>
-Description: <input type="text" readonly [(ngModel)]="toDoCls.description" ><br>
-
-Pending<input type="radio" name="status" value="pending" [checked]="toDoCls.status == true" [(ngModel)]="answer">
-Done<input type="radio" name="status" value="done" [checked]="toDoCls.status == false" [(ngModel)]="answer">
-<br>
-<br>
-<button (click)="submitData()"> Submit</button><br>
-<div *ngIf="this.errorMsg == true">
-    Name is required
-</div>
-<div *ngIf="pageLoading != 1">
-    <div *ngIf="resCls.isError == true">
-        {{resCls.endMessage}}
-    </div>
-    <div *ngIf="resCls.isError == false">
-        {{resCls.endMessage}}
-    </div>
-</div> -->
