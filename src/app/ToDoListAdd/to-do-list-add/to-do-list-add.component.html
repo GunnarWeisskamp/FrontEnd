@@ -1,0 +1,32 @@
+<div class="container">
+    <span>Create a To Do Item</span>
+    <table class="table" id="tblAddToDo">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Due Date</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><input type="text" [(ngModel)]="toDoCls.name"></th>
+            <th scope="row"><textarea rows="4" cols="50" [(ngModel)]="toDoCls.description" max="500" ></textarea></th>
+            <th scope="row"><input type="date" [(ngModel)]="toDoCls.dueDate"></th>
+            <th scope="row"><button (click)="submitData()">Submit</button></th>
+          </tr>  
+        </tbody>
+    </table>
+    <div *ngIf="this.errorMsg == true">
+        <span id="spNameIsRequiredError">Name is required!</span>
+    </div>
+    <div *ngIf="pageLoading != 1">
+        <div *ngIf="resCls.isError == true">
+          <span>{{resCls.endMessage}}</span>
+        </div>
+        <div *ngIf="resCls.isError == false">
+            <span id="spToDoAddedValidMsg">{{resCls.endMessage}}</span>
+        </div>
+    </div>
+</div>

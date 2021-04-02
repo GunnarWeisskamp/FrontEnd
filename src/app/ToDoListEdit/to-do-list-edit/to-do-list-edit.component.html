@@ -1,0 +1,79 @@
+<div class="container">
+    <span>Edit a To Do Item</span>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Due Date</th>
+                <th>Current Status</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of toDoClsArray">
+                <th>{{ item.id }}</th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.dueDate}}</td>
+                <td>
+                    <div *ngIf="item.status == false">
+                        It is pending
+                    </div>
+                    <div *ngIf="item.status == true">
+                        It is done
+                    </div>
+                </td>
+                <td><button (click)="edit(item.id)">Click me!</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <span>Change Current Data</span>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Current Status</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><input type="text" readonly [(ngModel)]="toDoCls.id"></th>
+            <th scope="row"><input type="text" [(ngModel)]="toDoCls.name"></th>
+            <th scope="row"><textarea rows="4" cols="50" [(ngModel)]="toDoCls.description" max="500" ></textarea></th>
+            <th scope="row"><input type="date" [(ngModel)]="toDoCls.dueDate"></th>
+            <th scope="row">
+                <div *ngIf="toDoCls.status == false">
+                    It is pending
+                </div>
+                <div *ngIf="toDoCls.status == true">
+                    It is done
+                </div>
+            </th>
+            <th scope="row"><button (click)="submitData()">Submit</button></th>
+          </tr>  
+        </tbody>
+    </table>
+    <div *ngIf="this.errorMsg == true">
+        <span>Name is required</span>
+    </div>
+    <div *ngIf="pageLoading != 1">
+        <div *ngIf="resCls.isError == true">
+            <span>{{resCls.endMessage}}</span>
+        </div>
+        <div *ngIf="resCls.isError == false">
+            <span>{{resCls.endMessage}}</span>
+        </div>
+        <div *ngIf="idError == true">
+            <span>You must first choose a record to edit</span>
+        </div>
+    </div>
+</div>

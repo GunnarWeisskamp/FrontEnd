@@ -1,6 +1,6 @@
-a{
+.homePageHeader {
     text-align: center;
-    font: bold 20px Sans-Serif;
+    font: bold 30px Sans-Serif;
     padding: 40px 0;
     color: #444;
   text-shadow: 
@@ -11,4 +11,4 @@ a{
     5px 4px 1px #ccc, 4px 5px 1px #eee,
     6px 5px 1px #ccc, 5px 6px 1px #eee,
     7px 6px 1px #ccc;
-}
+  }

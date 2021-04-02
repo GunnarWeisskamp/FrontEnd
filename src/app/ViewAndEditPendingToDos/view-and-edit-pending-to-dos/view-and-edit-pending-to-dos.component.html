@@ -1,0 +1,104 @@
+<div class="container">
+  <table class="table table-striped">
+      <thead>
+          <tr>
+              <th> Get To Do List By Done Status</th>
+              <th>Get To Do List By Pending Status</th>           
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="col"><input type="radio" name="headStatus" value="done" (change)="getAllToDoByStatus()"  [(ngModel)]="statusToGet"></th>
+          <th scope="col"><input type="radio" name="headStatus" value="pending" (change)="getAllToDoByStatus()"  [(ngModel)]="statusToGet"><br></th>    
+        </tr>
+      </tbody>
+  </table>
+</div>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Due Date</th>
+      <th>Status</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of toDoClsArray">
+      <th>{{ item.id }}</th>
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.dueDate}}</td>
+      <td>
+        <div *ngIf="item.status == false">
+            It is pending
+        </div>
+        <div *ngIf="item.status == true">
+            It is done
+        </div>
+    </td>
+      <td><button (click)="edit(item.id)">Click me!</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container">
+  <span>Edit To Do Pending Record</span>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Pending</th>
+      <th>Done</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of toDoClsArray">
+      <th><input type="text" readonly [(ngModel)]="toDoCls.id"></th>
+      <td><input type="text" readonly [(ngModel)]="toDoCls.description"></td>
+      <td><input type="radio" name="status" value="pending" [checked]="toDoCls.status == false" [(ngModel)]="answer"></td>
+      <td><input type="radio" name="status" value="done" [checked]="toDoCls.status == true" [(ngModel)]="answer"></td>
+      <td><button (click)="submitData()"> Submit</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <div *ngIf="pageLoading != 1">
+      <div *ngIf="resCls.isError == true">
+          <span>{{resCls.endMessage}}</span>
+      </div>
+      <div *ngIf="resCls.isError == false">
+          <span>{{resCls.endMessage}}</span>
+      </div>
+  </div>
+</div>
+
+
+  <!-- <br>
+  Edit Pending<br>
+<br>
+Id: <input type="text" readonly [(ngModel)]="toDoCls.id"><br>
+Description: <input type="text" readonly [(ngModel)]="toDoCls.description" ><br>
+
+Pending<input type="radio" name="status" value="pending" [checked]="toDoCls.status == true" [(ngModel)]="answer">
+Done<input type="radio" name="status" value="done" [checked]="toDoCls.status == false" [(ngModel)]="answer">
+<br>
+<br>
+<button (click)="submitData()"> Submit</button><br>
+<div *ngIf="this.errorMsg == true">
+    Name is required
+</div>
+<div *ngIf="pageLoading != 1">
+    <div *ngIf="resCls.isError == true">
+        {{resCls.endMessage}}
+    </div>
+    <div *ngIf="resCls.isError == false">
+        {{resCls.endMessage}}
+    </div>
+</div> -->

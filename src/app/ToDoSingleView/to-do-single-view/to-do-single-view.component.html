@@ -1,0 +1,49 @@
+<div class="container">
+    Enter ID of To Do to view 
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Submit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><input type="number" [(ngModel)]="id" required></th>
+            <th scope="row"><button (click)="submitData()">Submit</button></th>
+          </tr>  
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    Results 
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="error == 0">
+            <th scope="row"><input type="text" [(ngModel)]="toDoCls.name"></th>
+            <th scope="row"><textarea rows="4" cols="50" readonly [(ngModel)]="toDoCls.description" max="500" ></textarea></th>
+            <th scope="row">
+                <div *ngIf="toDoCls.status == false">
+                    It is pending
+                </div>
+                <div *ngIf="toDoCls.status == true">
+                    It is done
+                </div>
+            </th>
+            <th scope="row"><input type="text" [(ngModel)]="toDoCls.dueDate"></th>
+          </tr>  
+        </tbody>
+      </table>
+      <div *ngIf="error == 1">
+          {{errorMsg}}
+      </div>
+</div>
